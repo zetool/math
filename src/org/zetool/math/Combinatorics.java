@@ -14,11 +14,6 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-/*
- * Combinatorics.java
- * Created 22.02.2010, 21:11:16
- */
-
 package org.zetool.math;
 
 /**

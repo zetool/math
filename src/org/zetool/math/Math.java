@@ -1,7 +1,3 @@
-/*
- * Math.java
- * Created 22.02.2010, 21:26:06
- */
 package org.zetool.math;
 
 /**

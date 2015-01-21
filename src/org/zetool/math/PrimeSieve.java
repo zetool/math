@@ -1,11 +1,5 @@
-/**
- * PrimeSieve.java
- * Created: Feb 15, 2010,2:29:27 PM
- */
 package org.zetool.math;
 
-import org.zetool.common.util.Formatter;
-import org.zetool.common.util.units.TimeUnits;
 import java.util.Arrays;
 
 /**
@@ -431,7 +425,7 @@ public class PrimeSieve {
 			p.compute();
 			end = System.nanoTime();
 			//System.out.print( ";" + (end - start) );
-			System.out.print( "; " + Formatter.formatUnit( (end - start), TimeUnits.NanoSeconds) );
+			//System.out.print( "; " + Formatter.formatUnit( (end - start), TimeUnits.NanoSeconds) );
 			if( i > 2 )
 				total += (end-start);
 
@@ -510,7 +504,7 @@ public class PrimeSieve {
 //
 			System.out.println();
 		}
-		System.out.println( "Total: "+ Formatter.formatUnit( (total/count), TimeUnits.NanoSeconds) );
+		//System.out.println( "Total: "+ Formatter.formatUnit( (total/count), TimeUnits.NanoSeconds) );
 		System.out.println( p.getPrimeCount() );
 		System.out.println( p.getPrimes()[1] );
 		System.out.println( p.getPrimes()[10001] );

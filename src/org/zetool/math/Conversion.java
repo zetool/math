@@ -1,7 +1,3 @@
-/**
- * Conversion.java
- * Created: Mar 9, 2010,2:31:17 PM
- */
 package org.zetool.math;
 
 /**

@@ -1,12 +1,14 @@
 package org.zetool.math;
 
+import static org.zetool.math.BitOperations.bitLen;
+
 /**
  * The class {@code Math} is a utility class that provides some additional
  * mathematical methods.
  * @author Jan-Philipp Kappmeier
  */
 public class Math {
-	/** Creates a new instance of {@code Math}. */
+	/** Avoid instantiation of {@code Math}. */
 	private Math() { }
 
 	/**
@@ -30,17 +32,6 @@ public class Math {
 			throw new IllegalArgumentException( "n > 0 required" );
 		return 32 - Integer.numberOfLeadingZeros( n - 1 );
 	}
-	public static int bitLen(int w)
-	{
-		return w < 1 << 15 ? (w < 1 << 7 ? (w < 1 << 3 ? (w < 1 << 1 ? (w < 1 ? (w < 0 ? 32 : 0) : 1)
-		: (w < 1 << 2 ? 2 : 3)) : (w < 1 << 5 ? (w < 1 << 4 ? 4 : 5) : (w < 1 << 6 ? 6 : 7)))
-		: (w < 1 << 11 ? (w < 1 << 9 ? (w < 1 << 8 ? 8 : 9) : (w < 1 << 10 ? 10 : 11))
-		: (w < 1 << 13 ? (w < 1 << 12 ? 12 : 13) : (w < 1 << 14 ? 14 : 15))))
-		: (w < 1 << 23 ? (w < 1 << 19 ? (w < 1 << 17 ? (w < 1 << 16 ? 16 : 17) : (w < 1 << 18 ? 18 : 19))
-		: (w < 1 << 21 ? (w < 1 << 20 ? 20 : 21) : (w < 1 << 22 ? 22 : 23)))
-		: (w < 1 << 27 ? (w < 1 << 25 ? (w < 1 << 24 ? 24 : 25) : (w < 1 << 26 ? 26 : 27))
-		: (w < 1 << 29 ? (w < 1 << 28 ? 28 : 29) : (w < 1 << 30 ? 30 : 31))));
-	}
 
 	public static int sqrt( int n ) {
 		if( n < 0 )
@@ -48,15 +39,6 @@ public class Math {
 		if( n == 0 )
 			return 0;
 
-//		int z = 0, w = 1, y = 1;
-//		while( w <= n ) {
-//			z++;
-//			w += y + 2;
-//			y +=2;
-//		}
-//		return z;
-
-//		int lower, upper = BitOperations.bitLen( n );
 		int lower, upper = bitLen( n );
 
 		do {

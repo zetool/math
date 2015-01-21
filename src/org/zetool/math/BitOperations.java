@@ -22,14 +22,16 @@ package org.zetool.math;
  * @author Jan-Philipp Kappmeier
  */
 public class BitOperations {
-	/**
-	 * Aviods instancint the utility class with combinatorial methods.
-	 */
-	private BitOperations() {
-	}
+	/** Aviods instancing the utility class with combinatorial methods. */
+	private BitOperations() {}
 
+  /**
+   * Returns the length of an integer in its binary represantation. Constant runtime in O(1).
+	 * @param n the integer
+	 * @return the number of bits necessary to represent
+	 */
 	public static int bitLen( int n ) {
-		return 31 - Integer.numberOfLeadingZeros( n );
+		return 32 - Integer.numberOfLeadingZeros( n );
 	}
 
 	/**
@@ -44,7 +46,7 @@ public class BitOperations {
 
 	public static int maxNumber( int bits ) {
 		int sum = 0;
-		for( int i = 0; i <= bits; ++i )
+		for( int i = 0; i < bits; ++i )
 			sum += 1 << i;
 		return sum;
 	}

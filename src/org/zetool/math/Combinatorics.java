@@ -1,4 +1,4 @@
-/* copyright 2010
+/* copyright 2010-2015
  *
  * This program is free software; you can redistribute it and/or
  * as published by the Free Software Foundation; either version 2

@@ -14,7 +14,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package de.tu_berlin.math.coga.math.vectormath;
+package org.zetool.math.vectormath;
 
 import org.zetool.common.localization.LocalizationManager;
 import java.text.NumberFormat;

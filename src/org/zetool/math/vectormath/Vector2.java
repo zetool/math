@@ -1,4 +1,4 @@
-package de.tu_berlin.math.coga.math.vectormath;
+package org.zetool.math.vectormath;
 
 
 import org.zetool.common.localization.LocalizationManager;

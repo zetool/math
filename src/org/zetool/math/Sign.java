@@ -3,7 +3,7 @@
  * Created: 14.11.2010, 18:43:48
  */
 
-package opengl.bsp;
+package org.zetool.math;
 
 /**
  *

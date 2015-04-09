@@ -1,5 +1,5 @@
 
-package de.tu_berlin.math.coga.math.matrix;
+package org.zetool.math.matrix;
 
 /**
  *

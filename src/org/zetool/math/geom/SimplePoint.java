@@ -16,14 +16,13 @@
 
 package org.zetool.math.geom;
 
-
 /**
  *
  * @author Jan-Philipp Kappmeier
  */
 public class SimplePoint implements Point {
-  private double x;
-  private double y;
+  private final double x;
+  private final double y;
 
   public SimplePoint( double x, double y ) {
     this.x = x;
@@ -42,9 +41,6 @@ public class SimplePoint implements Point {
 
   @Override
   public String toString() {
-    return "(" + x + "," + y + ')';
+    return parseableString();
   }
-
-
-
 }

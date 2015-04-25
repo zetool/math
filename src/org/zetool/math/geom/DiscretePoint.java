@@ -1,4 +1,4 @@
-/* zet evacuation tool copyright (c) 2007-14 zet evacuation team
+/* copyright 2014-2015
  *
  * This program is free software; you can redistribute it and/or
  * as published by the Free Software Foundation; either version 2
@@ -20,24 +20,36 @@ package org.zetool.math.geom;
  *
  * @author Jan-Philipp Kappmeier
  */
-public interface Point extends NDimensional<Double> {
-  public double getX();
-  public double getY();
+public class DiscretePoint implements NDimensional<Integer> {
+  private final int x;
+  private final int y;
+
+  public DiscretePoint( int x, int y ) {
+    this.x = x;
+    this.y = y;
+  }
+  
+  public int getX() {
+    return x;
+  }
+  public int getY() {
+    return y;
+  }
 
   @Override
-  public default int getDimension() {
+  public int getDimension() {
     return 2;
   }
   
   @Override
-  public default Double get( int i ) {
+  public Integer get( int i ) {
     switch( i ) {
       case 1:
         return getX();
       case 2:
         return getY();
       default:
-        throw new IllegalArgumentException( "Vector2 has only two ids." );
+        throw new IllegalArgumentException( "DiscretePoint has only two ids." );
     }
   }
 }

@@ -54,14 +54,6 @@ public class Vector2 implements Cloneable, Point {
 	}
 
 	/**
-	 * Returns the dimension of the vector.
-	 * @return the dimension of the vector
-	 */
-	public int getDimension() {
-		return 2;
-	}
-
-	/**
 	 * Inverts the direction of the vector. Equals the multiplication with the
 	 * scalar value -1.
 	 */
@@ -114,6 +106,9 @@ public class Vector2 implements Cloneable, Point {
 		this.y += y;
 	}
 
+  
+  
+  @Override
 	public double getX() {
 		return x;
 	}
@@ -126,6 +121,7 @@ public class Vector2 implements Cloneable, Point {
 		this.x = x;
 	}
 
+  @Override
 	public double getY() {
 		return y;
 	}

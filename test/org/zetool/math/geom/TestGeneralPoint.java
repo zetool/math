@@ -16,28 +16,31 @@
 
 package org.zetool.math.geom;
 
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+
 /**
  *
  * @author Jan-Philipp Kappmeier
  */
-public interface Point extends NDimensional<Double> {
-  public double getX();
-  public double getY();
-
-  @Override
-  public default int getDimension() {
-    return 2;
-  }
+public class TestGeneralPoint {
   
-  @Override
-  public default Double get( int i ) {
-    switch( i ) {
-      case 1:
-        return getX();
-      case 2:
-        return getY();
-      default:
-        throw new IllegalArgumentException( "Vector2 has only two ids." );
-    }
+  @Test
+  public void testParsebleString() {
+    NDimensional<Integer> testPoint = new NDimensional<Integer>() {
+
+      private final Integer[] numbers = new Integer[]{1, 2, 3};
+      
+      @Override
+      public int getDimension() {
+        return 3;
+      }
+
+      @Override
+      public Integer get( int i ) {
+        return numbers[i];
+      }
+    };
+    assertEquals( "Parseable representation invalid", "(1,2,3)", testPoint.parseableString() );
   }
 }

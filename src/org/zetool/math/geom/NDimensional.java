@@ -19,25 +19,33 @@ package org.zetool.math.geom;
 /**
  *
  * @author Jan-Philipp Kappmeier
+ * @param <E>
  */
-public interface Point extends NDimensional<Double> {
-  public double getX();
-  public double getY();
-
-  @Override
-  public default int getDimension() {
-    return 2;
-  }
+public interface NDimensional<E extends Number> {
+  /**
+   * Returns the dimension of the {@literal n}-dimensional tuple.
+   * @return 
+   */
+  int getDimension();
   
-  @Override
-  public default Double get( int i ) {
-    switch( i ) {
-      case 1:
-        return getX();
-      case 2:
-        return getY();
-      default:
-        throw new IllegalArgumentException( "Vector2 has only two ids." );
+  /**
+   * Returns the {@literal i}th index.
+   * @param i
+   * @return 
+   */
+  E get( int i );
+
+  /**
+   * Returns a representation of the {@literal n}-dimensional tuple in form {@literal (x_1, x_2, ..., x_n)}.
+   * @return string representation as {@literal (x_1, x_2, ..., x_n)}
+   */
+  default String parseableString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append( "(" );
+    for( int i = 0; i < getDimension(); ++i ) {
+      sb.append( get(i) ).append( "," );
     }
+    sb.replace(sb.length()-1, sb.length(), ")");
+    return sb.toString();
   }
 }

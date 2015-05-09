@@ -17,37 +17,43 @@
 package org.zetool.math;
 
 /**
- * The class {@code BitOperations} is a utility class that provides some
- * bit operations.
+ * The class {@code BitOperations} is a utility class that provides some bit operations.
+ *
  * @author Jan-Philipp Kappmeier
  */
 public class BitOperations {
-	/** Aviods instancing the utility class with combinatorial methods. */
-	private BitOperations() {}
+  /**
+   * Aviods instancing the utility class with combinatorial methods.
+   */
+  private BitOperations() {
+  }
 
   /**
    * Returns the length of an integer in its binary represantation. Constant runtime in O(1).
-	 * @param n the integer
-	 * @return the number of bits necessary to represent
-	 */
-	public static int bitLen( int n ) {
-		return 32 - Integer.numberOfLeadingZeros( n );
-	}
+   *
+   * @param n the integer
+   * @return the number of bits necessary to represent
+   */
+  public static int bitLen( int n ) {
+    return 32 - Integer.numberOfLeadingZeros( n );
+  }
 
-	/**
-	 * Checks weather the {@code i}-th bit of a given number is set to 1.
-	 * @param n the number which is tested
-	 * @param i the bit position
-	 * @return {@code true} if the {@code i}-th bit of {@code n} is 1, {@code false} otherwise
-	 */
-	public static boolean bitTest( int n, int i ) {
-		return ((n & (1 << i)) != 0);
-	}
+  /**
+   * Checks weather the {@code i}-th bit of a given number is set to 1.
+   *
+   * @param n the number which is tested
+   * @param i the bit position
+   * @return {@code true} if the {@code i}-th bit of {@code n} is 1, {@code false} otherwise
+   */
+  public static boolean bitTest( int n, byte i ) {
+    return (n & (1 << i)) != 0;
+  }
 
-	public static int maxNumber( int bits ) {
-		int sum = 0;
-		for( int i = 0; i < bits; ++i )
-			sum += 1 << i;
-		return sum;
-	}
+  public static int maxNumber( int bits ) {
+    int sum = 0;
+    for( int i = 0; i < bits; ++i ) {
+      sum += 1 << i;
+    }
+    return sum;
+  }
 }

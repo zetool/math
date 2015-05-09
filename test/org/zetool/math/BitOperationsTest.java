@@ -1,9 +1,13 @@
 package org.zetool.math;
 
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+import static org.zetool.math.BitOperations.bitLen;
+import static org.zetool.math.BitOperations.bitTest;
+import static org.zetool.math.BitOperations.maxNumber;
 import junit.framework.TestCase;
 import org.junit.Test;
-import static org.zetool.math.BitOperations.bitLen;
-import static org.zetool.math.BitOperations.maxNumber;
 
 /**
  * The class {@code BitOperationsTest} ...
@@ -92,31 +96,70 @@ public class BitOperationsTest extends TestCase {
 		return 32 - Integer.numberOfLeadingZeros( n );
 	}
 
+  
+  
   @Test
 	public void testBitLen() {
 		// Tests
 		for( int i = 0; i <= 31; i++ ) {
       int maxNumber = maxNumber( i );
-      System.out.println("bitLen( " + maxNumber + ") = " + bitLenExplicit( maxNumber ) );
-      assertEquals("Bisection fails", i, bitLen( maxNumber ) );
-      assertEquals("Bisection fails", i, bitLenBisection( maxNumber ) );
-      assertEquals("Trivial fails", i, bitLenTrivial( maxNumber ) );
-      assertEquals("Intern", i, bitLenIntern( maxNumber ) );
-      assertEquals("Explicit", i, bitLenExplicit( maxNumber ) );
+      assertThat("Bisection fails for " + maxNumber, bitLen( maxNumber ), is( equalTo( i ) ) );
+      assertThat("Bisection fails for " + maxNumber, bitLenBisection( maxNumber ), is( equalTo( i ) ) );
+      assertThat("Trivial fails for " + maxNumber, bitLenTrivial( maxNumber ), is( equalTo( i ) ) );
+      assertThat("Intern for " + maxNumber, bitLenIntern( maxNumber ), is( equalTo( i ) ) );
+      assertThat("Explicit for " + maxNumber, bitLenExplicit( maxNumber ), is( equalTo( i ) ) );
     }
 
 		for( int i = 0; i <= 31; i++ ) {
-      assertEquals("Bisection fails for input " + (1 << i), i+1, bitLenBisection( 1 << i ) );
-      assertEquals("Trivial fails", i+1, bitLenTrivial( 1 << i ) );
-      assertEquals("Intern", i+1, bitLenIntern( 1 << i ) );
-      assertEquals("Explicit", i+1, bitLenExplicit( 1 << i ) );
+      assertThat("Bisection fails for input " + (1 << i), bitLenBisection( 1 << i ), is( equalTo( i + 1 ) ) );
+      assertThat("Trivial fails", bitLenTrivial( 1 << i ), is( equalTo( i + 1 ) ) );
+      assertThat("Intern", bitLenIntern( 1 << i ), is( equalTo( i + 1 ) ) );
+      assertThat("Explicit", bitLenExplicit( 1 << i ), is( equalTo( i + 1 ) ) );
     }
 
 		for( int i = 1; i < 32; i++ ) {
-      assertEquals("Bisection fails for input " + ((1 << i) - 1), i, bitLenBisection( (1 << i) - 1 ) );
-      assertEquals("Trivial fails", i, bitLenTrivial((1 << i) - 1 ) );
-      assertEquals("Intern", i, bitLenIntern((1 << i) - 1) );
-      assertEquals("Explicit", i, bitLenExplicit((1 << i) - 1) );
+      assertThat("Bisection fails for input " + ((1 << i) - 1), bitLenBisection( (1 << i) - 1 ), is( equalTo( i ) ) );
+      assertThat("Trivial fails for input " + ((1 << i) - 1), bitLenTrivial((1 << i) - 1 ), is( equalTo( i ) ) );
+      assertThat("Intern for input " + ((1 << i) - 1), bitLenIntern((1 << i) - 1), is( equalTo( i ) ) );
+      assertThat("Explicit for input " + ((1 << i) - 1), bitLenExplicit((1 << i) - 1), is( equalTo( i ) ) );
     }
 	}
+  
+  @Test
+  public void testBitTestAll() {
+    int test = 0xFFFFFFFF;
+    for( byte i = 0; i < Integer.SIZE; ++i ) {
+      assertThat( bitTest( test, i ), is( true ) );
+    }
+  }
+  
+  @Test
+  public void testBitTestNone() {
+    for( byte i = 0; i < Integer.SIZE; ++i ) {
+      assertThat( bitTest( 0, i ), is( false ) );
+    }
+  }
+  
+  @Test
+  public void testBitTestPowerOfTwo() {
+    for( byte i = 0; i < Integer.SIZE; ++i ) {
+      assertExactlyBit( 1 << i, i );
+    }
+  }
+  
+  /**
+   * Asserts that exactly one bit of a given integer is set to {@literal 1}.
+   * 
+   * @param test the number to be tested
+   * @param bit the bit's index
+   */
+  private void assertExactlyBit( int test, byte bit ) {
+    for( byte i = 0; i < bit; ++i ) {
+      assertThat( "Test for " + test + " at index " + i, bitTest( test, i ), is( false ) );
+    }
+    assertThat( "Test for " + test + " at index " + bit, bitTest( test, bit ), is( true ) );
+    for( byte i = (byte)(bit + 1); i < Integer.SIZE; ++i ) {
+      assertThat( "Test for " + test + " at index " + i, bitTest( test, i ), is( false ) );
+    }
+  }
 }

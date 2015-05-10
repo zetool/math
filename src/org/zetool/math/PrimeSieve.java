@@ -193,26 +193,22 @@ public class PrimeSieve {
 		int k = 0;
 		int c = 4;
 
-		try {
-			for( i = 5; i <= java.lang.Math.floor( java.lang.Math.sqrt( n ) ); i += c ) {
-				//c = c == 2 ? 4 : 2;
-				c = swap[c];
-				int first = n/i;
-				first += offsetCorrection[first%2][first%3];
+    for( i = 5; i <= java.lang.Math.floor( java.lang.Math.sqrt( n ) ); i += c ) {
+      //c = c == 2 ? 4 : 2;
+      c = swap[c];
+      int first = n/i;
+      first += offsetCorrection[first%2][first%3];
 
-				int c2 = first%3 == 1 ? 4 : 2;
+      int c2 = first%3 == 1 ? 4 : 2;
 
-				for( k = first; k >= i; k -= c2 ) {
-					//c2 = c2 == 2 ? 4 : 2;
-					c2 = swap[c2];
-					//working[((i*k)-5) / 3 + (((i*k)-5)%3 == 0 ? 0 : 1)] = true;
-					// experiments show that the following (which does the same) is slower:
-					working[(int)java.lang.Math.ceil( ((i*k)-5) / 3.0 )] = true;
-				}
-			}
-		} catch( Exception e ) {
-
-		}
+      for( k = first; k >= i; k -= c2 ) {
+        //c2 = c2 == 2 ? 4 : 2;
+        c2 = swap[c2];
+        //working[((i*k)-5) / 3 + (((i*k)-5)%3 == 0 ? 0 : 1)] = true;
+        // experiments show that the following (which does the same) is slower:
+        working[(int)java.lang.Math.ceil( ((i*k)-5) / 3.0 )] = true;
+      }
+    }
 
 		int count = 0;
 		primes[count++] = 2;
@@ -274,67 +270,6 @@ public class PrimeSieve {
 				primes[count++] = start;
 		}
 		primeCount = count;
-	}
-
-	public void computeLuschny() {
-		if( n == 2 ) {
-			primes[0] = 2;
-			primeCount = 1;
-			return;
-		}
-
-		boolean[] working = new boolean[n/3];
-
-		int d1 = 8;
-		int d2 = 8;
-		int p1 = 3;
-		int p2 = 7;
-		int s1 = 7;
-		int s2 = 3;
-		int thisN = 0;
-		int len = working.length;
-		boolean toggle = false;
-
-		while(s1 < len) {// -- scan sieve
-			if( !working[thisN++] ) { // -- if a prime is found
-				// -- cancel its multiples
-				int inc = p1 + p2;
-
-				for( int k = s1; k < len; k += inc )
-					working[k] = true;
-
-				for( int k = s1 + s2; k < len; k += inc )
-					working[k] = true;
-			}
-
-			if( toggle = !toggle ) { // Never mind, it's ok.
-				s1 += d2;
-				d1 += 16;
-				p1 += 2;
-				p2 += 2;
-				s2 = p2;
-			} else {
-				s1 += d1;
-				d2 += 8;
-				p1 += 2;
-				p2 += 6;
-				s2 = p1;
-			}
-		}
-
-		toggle = false;
-		int p = 5, i = 0, j = 2;
-
-		primes[0] = 2;
-		primes[1] = 3;
-
-		while(p <= n) {
-			if( !working[i++] )
-				primes[j++] = p;
-			// -- never mind, it's ok.
-			p += (toggle = !toggle) ? 2 : 4;
-		}
-		primeCount = j;
 	}
 
 	public void computeAtkin() {
@@ -456,15 +391,6 @@ public class PrimeSieve {
 			System.gc();
 			start = System.nanoTime();
 			p.computeADW3Half();
-			end = System.nanoTime();
-			//System.out.print( ";" + (end - start) );
-			System.out.print( "; " + Formatter.formatUnit( (end - start), TimeUnits.NanoSeconds) );
-
-			System.out.print( ";Luschny" );
-			p = new PrimeSieve( n );
-			System.gc();
-			start = System.nanoTime();
-			p.computeLuschny();
 			end = System.nanoTime();
 			//System.out.print( ";" + (end - start) );
 			System.out.print( "; " + Formatter.formatUnit( (end - start), TimeUnits.NanoSeconds) );

@@ -3,11 +3,11 @@ package org.zetool.math;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-import static org.zetool.math.Combinatorics.bico;
-
 import org.junit.Test;
+import static org.zetool.math.Combinatorics.bico;
 import static org.zetool.math.Combinatorics.factorial;
 import static org.zetool.math.Combinatorics.factrl;
+
 
 /**
  * Units tests for {@link Combinatorics}.

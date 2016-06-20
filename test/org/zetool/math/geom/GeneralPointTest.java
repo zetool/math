@@ -23,7 +23,7 @@ import org.junit.Test;
  *
  * @author Jan-Philipp Kappmeier
  */
-public class TestGeneralPoint {
+public class GeneralPointTest {
   
   @Test
   public void testParsebleString() {

@@ -52,149 +52,130 @@ public class PrimeSieveTest {
         pl109, pl109, pl109, pl113, pl113, pl113, pl113, pl113, pl113, pl113, pl113, pl113, pl113, pl113, pl113, pl113, pl113
     };
 
+    @Test
     public void testPrimeSieve() throws Exception {
-        System.out.println("Testing prime sieve for n = 16...");
         int n = 16;
         PrimeSieve p = new PrimeSieve(n);
         p.computeThird();
         giveOutPrimes(p);
         check(p, pl13);
 
-        System.out.println("Test correct number of primes...");
         for (int i = 2; i <= 126; ++i) {
-            System.out.print(i + " ");
             p = new PrimeSieve(i);
             p.computeThird();
             check(p, parray[i - 2]);
         }
-        System.out.println();
-        System.out.println();
     }
 
+    /**
+     * Low mem algorithm for prime sieve for n = 16.
+     * @throws Exception 
+     */
+    @Test
     public void testPrimeSieveLowMem() throws Exception {
-        System.out.println("Testing Low Mem Algorithmus");
-        System.out.println("Testing prime sieve for n = 16...");
         int n = 16;
         PrimeSieve p = new PrimeSieve(n);
         p.computeLowMem();
         giveOutPrimes(p);
         check(p, pl13);
 
-        System.out.println("Test correct number of primes...");
         for (int i = 2; i <= 126; ++i) {
-            System.out.print(i + " ");
             p = new PrimeSieve(i);
             p.compute();
             check(p, parray[i - 2]);
         }
-        System.out.println();
-        System.out.println();
     }
 
+    /**
+     * Test Algorithmus der Woche Optimiert3 for n = 16.
+     * @throws Exception 
+     */
     @Test
     public void testADW3() throws Exception {
-        System.out.println("Testing Algorithmus der Woche Optimiert3");
-        System.out.println("Testing prime sieve for n = 16...");
         int n = 16;
         PrimeSieve p = new PrimeSieve(n);
         p.computeADW3();
         giveOutPrimes(p);
         check(p, pl13);
 
-        System.out.println("Test correct number of primes...");
         for (int i = 2; i <= 126; ++i) {
-            System.out.print(i + " ");
             p = new PrimeSieve(i);
             p.computeADW3();
             check(p, parray[i - 2]);
         }
-        System.out.println();
-        System.out.println();
     }
 
+    @Test
     public void testADW3Half() throws Exception {
-        System.out.println("Testing Algorithmus der Woche Optimiert3-half");
-        System.out.println("Testing prime sieve for n = 16...");
         int n = 16;
         PrimeSieve p = new PrimeSieve(n);
         p.computeADW3Half();
         giveOutPrimes(p);
         check(p, pl13);
 
-        System.out.println("Test correct number of primes...");
         for (int i = 2; i <= 126; ++i) {
-            System.out.print(i + " ");
             p = new PrimeSieve(i);
             p.computeADW3();
             check(p, parray[i - 2]);
         }
-        System.out.println();
-        System.out.println();
     }
 
+    @Test
     public void testADW3Third() throws Exception {
-        System.out.println("Testing Algorithmus der Woche Optimiert3-third");
-        System.out.println("Testing prime sieve for n = 16...");
         int n = 16;
         PrimeSieve p = new PrimeSieve(n);
         p.computeADW3Third();
         giveOutPrimes(p);
         check(p, pl13);
 
-        System.out.println("Test correct number of primes...");
         for (int i = 2; i <= 126; ++i) {
-            System.out.print(i + " ");
             p = new PrimeSieve(i);
             p.computeADW3Third();
             check(p, parray[i - 2]);
         }
-        System.out.println();
-        System.out.println();
     }
 
+    /**
+     * Test low mem variant of algorithm skipping every third number for n = 16.
+     * @throws Exception 
+     */
+    @Test
     public void testADW3ThirdLowMem() throws Exception {
-        System.out.println("Testing Algorithmus der Woche Optimiert3-third");
-        System.out.println("Testing prime sieve for n = 16...");
         int n = 16;
         PrimeSieve p = new PrimeSieve(n);
         p.computeADW3ThirdLowMem();
         giveOutPrimes(p);
         check(p, pl13);
 
-        System.out.println("Test correct number of primes...");
         for (int i = 2; i <= 126; ++i) {
-            System.out.print(i + " ");
             p = new PrimeSieve(i);
             p.computeADW3ThirdLowMem();
             check(p, parray[i - 2]);
         }
-        System.out.println();
-        System.out.println();
     }
 
+    /**
+     * Testing Atkin's algorithm for prime compuation.
+     * @throws Exception 
+     */
+    @Test
     public void testAtkin() throws Exception {
-        System.out.println("Testing Atkin sieve");
-        System.out.println("Testing prime sieve for n = 16...");
         int n = 16;
         PrimeSieve p = new PrimeSieve(n);
         p.computeAtkin();
         giveOutPrimes(p);
         check(p, pl13);
 
-        System.out.println("Test correct number of primes...");
         for (int i = 2; i <= 126; ++i) {
-            System.out.print(i + " ");
             p = new PrimeSieve(i);
             p.compute();
             check(p, parray[i - 2]);
         }
-        System.out.println();
-        System.out.println();
     }
 
     private void giveOutPrimes(PrimeSieve p) {
         for (int i = 0; i < p.getPrimeCount(); ++i) {
-            System.out.print(p.getPrime(i + 1) + ' ');
+            System.out.print(p.getPrime(i + 1) + " ");
         }
         System.out.println();
     }

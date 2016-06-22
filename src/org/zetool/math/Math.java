@@ -9,7 +9,8 @@ import static org.zetool.math.BitOperations.bitLen;
  */
 public class Math {
     /** Avoid instantiation of {@code Math}. */
-    private Math() { }
+    private Math() {
+    }
 
     /**
      * Computes the rounded down logarithm to the basis 2 of an integral number.
@@ -44,7 +45,7 @@ public class Math {
         do {
             lower = n / upper;
             upper += lower;
-            upper >>= 1; //upper = upper/2;
+            upper >>= 1; //halven upper
         } while( upper > lower );
 
         return upper*upper > n ? upper-1 : upper;

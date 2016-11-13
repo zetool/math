@@ -35,7 +35,7 @@ public class Combinatorics {
         0.1208650973866179e-2,
         -0.5395239384953e-5
     };
-    private final static double[] LOG_FACTORIAL_TABLE = new double[101];
+    private static final double[] LOG_FACTORIAL_TABLE = new double[101];
 
     /** Avoid instantiation of the utility class. */
     private Combinatorics() {

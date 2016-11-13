@@ -10,7 +10,8 @@ import java.util.function.DoubleFunction;
 public class NonLinearAverages {
     
     /** Avoid instantiation of utility class. */
-    private NonLinearAverages() {}
+    private NonLinearAverages() {
+    }
     
     public static double logisticAverage(double weightParameter, double val1, double val2) {
         return generalAverage(NonLinearAverages::logisticWeightFactor, weightParameter, val1, val2);

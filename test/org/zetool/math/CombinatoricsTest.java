@@ -211,6 +211,7 @@ public class CombinatoricsTest {
         assertThat(factln(-1), is(closeTo(0, 10e-6)));
         assertThat(factln(1), is(closeTo(0, 10e-6)));
         assertThat(factln(2), is(closeTo(0.69314718056, 10e-12)));
+         assertThat(factln(2), is(closeTo(0.69314718056, 10e-12)));
         //368.3544960724047495949641916365686271847148036500848794776...
         assertThat(factln(101), is(closeTo(368.35449607240475, 10e-10)));
     }

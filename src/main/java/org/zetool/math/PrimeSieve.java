@@ -362,7 +362,7 @@ public class PrimeSieve {
 			p.compute();
 			end = System.nanoTime();
 			//System.out.print( ";" + (end - start) );
-			System.out.print( "; " + Formatter.formatUnit( (end - start), TimeUnits.NanoSeconds) );
+			System.out.print( "; " + Formatter.formatUnit( (end - start), TimeUnits.NANO_SECOND) );
 			if( i > 2 )
 				total += (end-start);
 
@@ -373,7 +373,7 @@ public class PrimeSieve {
 			p.computeLowMem();
 			end = System.nanoTime();
 			//System.out.print( ";" + (end - start) );
-			System.out.print( "; " + Formatter.formatUnit((end - start), TimeUnits.NanoSeconds) );
+			System.out.print( "; " + Formatter.formatUnit((end - start), TimeUnits.NANO_SECOND) );
 			if( i > 2 )
 				total += (end-start);
 
@@ -384,7 +384,7 @@ public class PrimeSieve {
 			p.computeADW3();
 			end = System.nanoTime();
 			//System.out.print( ";" + (end - start) );
-			System.out.print( "; " + Formatter.formatUnit( (end - start), TimeUnits.NanoSeconds) );
+			System.out.print( "; " + Formatter.formatUnit( (end - start), TimeUnits.NANO_SECOND) );
 
 			System.out.print( ";OptAlgo3Half" );
 			p = new PrimeSieve( n );
@@ -393,7 +393,7 @@ public class PrimeSieve {
 			p.computeADW3Half();
 			end = System.nanoTime();
 			//System.out.print( ";" + (end - start) );
-			System.out.print( "; " + Formatter.formatUnit( (end - start), TimeUnits.NanoSeconds) );
+			System.out.print( "; " + Formatter.formatUnit( (end - start), TimeUnits.NANO_SECOND) );
 
 			System.out.print( ";Atkin" );
 			p = new PrimeSieve( n );
@@ -402,7 +402,7 @@ public class PrimeSieve {
 			p.computeAtkin();
 			end = System.nanoTime();
 			//System.out.print( ";" + (end - start) );
-			System.out.print( "; " + Formatter.formatUnit( (end - start), TimeUnits.NanoSeconds) );
+			System.out.print( "; " + Formatter.formatUnit( (end - start), TimeUnits.NANO_SECOND) );
 
 
 			System.out.print( ";OptAlgo3Third" );
@@ -412,7 +412,7 @@ public class PrimeSieve {
 			p.computeADW3Third();
 			end = System.nanoTime();
 			//System.out.print( ";" + (end - start) );
-			System.out.print( "; " + Formatter.formatUnit( (end - start), TimeUnits.NanoSeconds) );
+			System.out.print( "; " + Formatter.formatUnit( (end - start), TimeUnits.NANO_SECOND) );
 
 			System.out.print( ";OptAlgo3ThirdLowMem" );
 			//System.out.println( "Memory: " + Runtime.getRuntime().totalMemory() + " " );
@@ -423,7 +423,7 @@ public class PrimeSieve {
 			p.computeADW3ThirdLowMem();
 			//System.out.println( "Memory: " + Runtime.getRuntime().totalMemory()+ " " );
 			end = System.nanoTime();
-			System.out.print( "; " + Formatter.formatUnit( (end - start), TimeUnits.NanoSeconds) );
+			System.out.print( "; " + Formatter.formatUnit( (end - start), TimeUnits.NANO_SECOND) );
 
       System.out.println();
       
@@ -435,7 +435,7 @@ public class PrimeSieve {
 
 			System.out.println();
 		}
-		System.out.println( "Total: "+ Formatter.formatUnit( (total/count), TimeUnits.NanoSeconds) );
+		System.out.println( "Total: "+ Formatter.formatUnit( (total/count), TimeUnits.NANO_SECOND) );
 		System.out.println( p.getPrimeCount() );
 		System.out.println( p.getPrimes()[1] );
 		System.out.println( p.getPrimes()[10001] );

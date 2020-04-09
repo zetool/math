@@ -4,7 +4,6 @@ import static org.hamcrest.Matchers.closeTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.lessThan;
-import static org.jmock.AbstractExpectations.returnValue;
 import static org.junit.Assert.assertThat;
 import java.util.function.DoubleFunction;
 import org.jmock.Expectations;
